@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Proxy</title>
+
+    <script src="js/core.js"></script>
+    <script src="js/jquery-2.2.1.min.js"></script>
+    <script src="js/stomp.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/sockjs/1.0.3/sockjs.min.js"></script>
+
+    <style>
+        .row-padding {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+<body onload="connect()">
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div class="container">
+    <div class="row row-padding">
+        <button id="connect" onclick="connect();" class="btn btn-success">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();" class="btn btn-danger">Disconnect
+        </button>
+    </div>
+    <div id="conversationDiv" class="row row-padding">
+        <div class="form-inline row-padding">
+            <div class="input-group">
+                <input class="form-control" type="text" id="name"/>
+                <div class="input-group-btn">
+                    <button id="sendName" onclick="addHost(this.value);" class="btn btn-primary">Adicionar</button>
+                </div>
+            </div>
+        </div>
+        <div id="filters" class="row-padding">
+
+        </div>
+    </div>
+    <div class="row row-padding">
+        <div class="table-responsive">
+            <table id="table" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Método</th>
+                    <th>URL</th>
+                    <th>Parâmetros</th>
+                </tr>
+                </thead>
+                <tbody id="table-tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
